@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.delivery.dao.UserInfoDao">
+
+	<select id="getUserInfoByUserId" parameterType="String" resultType="com.bootdo.delivery.domain.UserInfo">
+		select * from sys_user
+		<where>
+			user_ID = #{userId}
+		</where>
+	</select>
+</mapper>
