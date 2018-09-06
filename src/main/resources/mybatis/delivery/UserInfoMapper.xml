@@ -6,7 +6,10 @@
 	<select id="getUserInfoByUserId" parameterType="String" resultType="com.bootdo.delivery.domain.UserInfo">
 		select * from sys_user
 		<where>
-			user_ID = #{userId}
+			USER_ID = #{userId}
 		</where>
+	</select>
+	<select id="getUserInfoList" resultType="com.bootdo.delivery.domain.UserInfo">
+		select * from sys_user
 	</select>
 </mapper>

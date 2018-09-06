@@ -3,9 +3,12 @@ package com.bootdo.delivery.service.impl;
 import com.bootdo.delivery.dao.UserInfoDao;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @Auther: Administrator
@@ -20,5 +23,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo getUserInfoByUserId(String userId) {
         return userInfoDao.getUserInfoByUserId(userId);
+    }
+
+    @Override
+    public List<UserInfo> getUserInfoList() {
+        return userInfoDao.getUserInfoList();
     }
 }

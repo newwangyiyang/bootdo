@@ -237,7 +237,30 @@
             <artifactId>jsoup</artifactId>
             <version>1.9.2</version>
         </dependency>
-
+        <!--pageHelper-->
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <!--springboot热加载-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
         <!--war包部署需要-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
@@ -264,6 +287,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>

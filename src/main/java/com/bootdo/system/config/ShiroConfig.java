@@ -75,6 +75,7 @@ public class ShiroConfig {
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
         //设置开放路径(必须再开始位置就进行设置)
+        filterChainDefinitionMap.put("/userInfo/**", "anon");
 
         filterChainDefinitionMap.put("/login","anon");
         filterChainDefinitionMap.put("/css/**", "anon");
@@ -91,7 +92,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/blog/open/**", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
-        filterChainDefinitionMap.put("/userInfo/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
