@@ -1,7 +1,6 @@
 package com.bootdo.delivery.dao;
 
 import com.bootdo.delivery.domain.UserInfo;
-import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

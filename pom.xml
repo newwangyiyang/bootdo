@@ -178,12 +178,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-devtools</artifactId>-->
-        <!--<optional>true</optional>-->
-        <!--</dependency>-->
-        <!--activiti-->
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
@@ -259,7 +253,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-            <scope>true</scope>
+            <scope>provided</scope>
         </dependency>
         <!--war包部署需要-->
         <!--<dependency>-->
@@ -267,17 +261,17 @@
         <!--<artifactId>spring-boot-starter-web</artifactId>-->
         <!--&lt;!&ndash; 移除嵌入式tomcat插件 &ndash;&gt;-->
         <!--<exclusions>-->
-        <!--<exclusion>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-        <!--</exclusion>-->
+            <!--<exclusion>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--</exclusion>-->
         <!--</exclusions>-->
-        <!--</dependency>-->
+    <!--</dependency>-->
         <!--<dependency>-->
-        <!--<groupId>javax.servlet</groupId>-->
-        <!--<artifactId>javax.servlet-api</artifactId>-->
-        <!--<version>3.1.0</version>-->
-        <!--<scope>provided</scope>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>javax.servlet-api</artifactId>-->
+            <!--<version>3.1.0</version>-->
+            <!--<scope>provided</scope>-->
         <!--</dependency>-->
     </dependencies>
     <build>
@@ -290,6 +284,15 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
+
+            <!--打成war时需要-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<skipTests>true</skipTests>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <!--<repositories>-->
