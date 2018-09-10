@@ -16,4 +16,5 @@ import java.util.List;
 public interface UserInfoDao {
     public UserInfo getUserInfoByUserId(@Param("userId") String userId);
     public List<UserInfo> getUserInfoList();
+    public void saveUserInfo(UserInfo userInfo);
 }

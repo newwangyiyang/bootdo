@@ -4,6 +4,8 @@ import com.bootdo.common.utils.ResultBean;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 public class UserInfoController {
+    private Logger logger = LoggerFactory.getLogger(UserInfo.class);
+
     @Autowired
     private UserInfoService userInfoService;
     /**
@@ -34,7 +38,7 @@ public class UserInfoController {
             UserInfo userInfo = userInfoService.getUserInfoByUserId(userId);
             return ResultBean.success(userInfo);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("获取个人信息失败" + e);
             return ResultBean.error("服务器错误");
         }
     }
@@ -55,5 +59,18 @@ public class UserInfoController {
         }catch (Exception e) {
             return ResultBean.error("服务器错误");
         }
+    }
+
+    /**
+     * @Author Administrator
+     * @Description //TODO 
+     * @Date 9:33 2018/9/10
+     * @Param 
+     * @return 
+     **/
+    @GetMapping("/saveUserInfo")
+    public ResultBean<UserInfo> saveUserInfo(UserInfo userInfo) {
+        UserInfo info = userInfoService.saveUserInfo(userInfo);
+        return ResultBean.success(info);
     }
 }

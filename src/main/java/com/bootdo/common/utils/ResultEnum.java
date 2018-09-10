@@ -1,10 +1,10 @@
 package com.bootdo.common.utils;
 
 /**
-* @author Mxy
-* @time 2018年5月28日 上午9:26:22
-* @description: 
-*/
+ * @Author wangyiyang
+ * @Description //TODO 
+ * @Date 9:05 2018/9/10
+ **/
 public enum ResultEnum {
 	
 	SUCCESS(1,"请求成功"),
@@ -13,24 +13,21 @@ public enum ResultEnum {
 	
 	EXCEPTION(2,"请求异常");
 	
-	private Integer status;
+	private Integer code;
 	
-	private String description;
-	
-	ResultEnum(Integer status, String description) {
-		
-		this.status = status;
-		
-		this.description = description;
-		
+	private String msg;
+
+	ResultEnum(Integer code, String msg) {
+		this.code = code;
+		this.msg = msg;
 	}
 
-	public Integer getStatus() {
-		return status;
+	public Integer getCode() {
+		return code;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getMsg() {
+		return msg;
 	}
-	
+
 }

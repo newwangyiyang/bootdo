@@ -12,4 +12,5 @@ import java.util.List;
 public interface UserInfoService {
     UserInfo getUserInfoByUserId(String userId);
     List<UserInfo> getUserInfoList();
+    UserInfo saveUserInfo(UserInfo userInfo);
 }

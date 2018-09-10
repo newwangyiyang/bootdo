@@ -12,4 +12,7 @@
 	<select id="getUserInfoList" resultType="com.bootdo.delivery.domain.UserInfo">
 		select * from sys_user
 	</select>
+	<insert id="saveUserInfo" parameterType="com.bootdo.delivery.domain.UserInfo" keyProperty="userId" useGeneratedKeys="true">
+		insert into sys_user (username, name, password, gmt_create) values (#{username}, #{name}, #{password}, #{gmtCreate})
+	</insert>
 </mapper>

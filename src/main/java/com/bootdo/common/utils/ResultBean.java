@@ -9,7 +9,7 @@ package com.bootdo.common.utils;
  */
 public class ResultBean<T> {
 
-    // 错误码
+    // 状态码
     private Integer code;
 
     // 提示信息
@@ -28,7 +28,6 @@ public class ResultBean<T> {
         this.data = data;
     }
 
-    // 省略getter和setter方法
     public Integer getCode() {
         return code;
     }
@@ -60,7 +59,7 @@ public class ResultBean<T> {
      * @return
      */
     public static <T> ResultBean<T> success(T data) {
-        return new ResultBean<>(com.bootdo.common.utils.ResultEnum.SUCCESS.getStatus(), com.bootdo.common.utils.ResultEnum.SUCCESS.getDescription(), data);
+        return new ResultBean<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMsg(), data);
     }
 
     /**
@@ -70,7 +69,7 @@ public class ResultBean<T> {
      * @return
      */
     public static <T> ResultBean<T> error() {
-        return new ResultBean<>(com.bootdo.common.utils.ResultEnum.ERROR.getStatus(), ResultEnum.ERROR.getDescription(), null);
+        return new ResultBean<>(ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMsg(), null);
     }
     /**
      * 失败
@@ -79,9 +78,19 @@ public class ResultBean<T> {
      * @return
      */
     public static <T> ResultBean<T> error(String message) {
-        return new ResultBean<>(com.bootdo.common.utils.ResultEnum.ERROR.getStatus(),message, null);
+        return new ResultBean<>(ResultEnum.ERROR.getCode(),message, null);
     }
 
+    /**
+     * @Author Administrator
+     * @Description //TODO 
+     * @Date 9:16 2018/9/10
+     * @Param 
+     * @return 
+     **/
+    public static <T> ResultBean<T> error(ResultEnum resultEnum) {
+        return new ResultBean<>(resultEnum.getCode(), resultEnum.getMsg(), null);
+    }
     /**
      * 异常
      *
@@ -91,6 +100,10 @@ public class ResultBean<T> {
      */
 
     public static <T> ResultBean<T> exception(T data) {
-        return new ResultBean<>(com.bootdo.common.utils.ResultEnum.EXCEPTION.getStatus(), com.bootdo.common.utils.ResultEnum.EXCEPTION.getDescription(), data);
+        return new ResultBean<>(ResultEnum.EXCEPTION.getCode(), ResultEnum.EXCEPTION.getMsg(), data);
+    }
+
+    public static <T> ResultBean<T> exception(Integer code, String msg) {
+        return new ResultBean<>(code, msg,null);
     }
 }
