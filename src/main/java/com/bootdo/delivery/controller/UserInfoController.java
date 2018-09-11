@@ -4,12 +4,15 @@ import com.bootdo.common.utils.ResultBean;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Auther: Administrator
@@ -72,5 +75,11 @@ public class UserInfoController {
     public ResultBean<UserInfo> saveUserInfo(UserInfo userInfo) {
         UserInfo info = userInfoService.saveUserInfo(userInfo);
         return ResultBean.success(info);
+    }
+
+    @GetMapping("/testLambda")
+    public List<String> testLambda() {
+        return Arrays.asList(new String[]{"1", "1", "2", null});
+//        list.stream().filter(num -> null != num).mapToInt().distinct().;
     }
 }
