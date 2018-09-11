@@ -5,13 +5,13 @@ import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -78,8 +78,24 @@ public class UserInfoController {
     }
 
     @GetMapping("/testLambda")
-    public List<String> testLambda() {
-        return Arrays.asList(new String[]{"1", "1", "2", null});
-//        list.stream().filter(num -> null != num).mapToInt().distinct().;
+    public List<Map<String, String>> testLambda() {
+        Map<String, String> map = Maps.newHashMap();
+        map.put("name", "王一扬");
+        Map<String, String> map2 = Maps.newHashMap();
+        map2.put("name", "明天");
+
+        List<Map<String, String>> list = Lists.newArrayList(map, map2);
+
+        return list.stream().map(m -> {
+            String name = m.get("name");
+            m.put("name", name + "123");
+            return m;
+        }).collect(Collectors.toList());
+
+    }
+
+    @PostMapping("/test")
+    public void test(@RequestBody UserInfo us) {
+       logger.info(us.getUsername());
     }
 }
