@@ -85,7 +85,6 @@ public class UserInfoController {
         map2.put("name", "明天");
 
         List<Map<String, String>> list = Lists.newArrayList(map, map2);
-
         return list.stream().map(m -> {
             String name = m.get("name");
             m.put("name", name + "123");
@@ -97,5 +96,11 @@ public class UserInfoController {
     @PostMapping("/test")
     public void test(@RequestBody UserInfo us) {
        logger.info(us.getUsername());
+    }
+
+
+    @GetMapping("getMapList")
+    public Map<String, Object> getMapList() {
+        return userInfoService.getMapList();
     }
 }

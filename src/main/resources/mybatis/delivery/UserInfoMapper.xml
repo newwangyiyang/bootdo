@@ -15,4 +15,17 @@
 	<insert id="saveUserInfo" parameterType="com.bootdo.delivery.domain.UserInfo" keyProperty="userId" useGeneratedKeys="true">
 		insert into sys_user (username, name, password, gmt_create) values (#{username}, #{name}, #{password}, #{gmtCreate})
 	</insert>
+
+	<select id="getMapList" resultType="HashMap">
+		select a.name,
+		b.CONTRACT_ID id,
+		b.DIVISION_ID d_id,
+		b.FLOW_NO flow
+		from
+		sys_user a
+		left join
+		t_business_delivery_application b
+		on a.user_id = b.CREATE_USER_ID
+		WHERE a.user_id = 138
+	</select>
 </mapper>

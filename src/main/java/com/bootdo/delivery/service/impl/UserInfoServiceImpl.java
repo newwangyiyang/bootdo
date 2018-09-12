@@ -6,6 +6,7 @@ import com.bootdo.common.utils.ResultEnum;
 import com.bootdo.delivery.dao.UserInfoDao;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
+import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -14,10 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Auther: Administrator
@@ -31,6 +30,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoDao userInfoDao;
+
     @Override
     public UserInfo getUserInfoByUserId(String userId) {
         return userInfoDao.getUserInfoByUserId(userId);
@@ -46,5 +46,20 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setGmtCreate(DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         userInfoDao.saveUserInfo(userInfo);
         throw new BDException("请求异常");
+    }
+
+    @Override
+    public Map<String, Object> getMapList() {
+        PageHelper.startPage(0, 2);
+        List<Map<String, String>> list = userInfoDao.getMapList();
+        String name = (String) list.get(0).get("name");
+        Map<String, Object> map = Maps.newHashMap();
+        List<Map<String, String>> list1 = list.stream().map(m -> {
+            m.remove("name");
+            return m;
+        }).collect(Collectors.toList());
+        map.put("name", name);
+        map.put("list", list1);
+        return map;
     }
 }

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Administrator
@@ -14,6 +15,7 @@ import java.util.List;
 @Mapper
 public interface UserInfoDao {
     public UserInfo getUserInfoByUserId(@Param("userId") String userId);
+    public List<Map<String, String>> getMapList();
     public List<UserInfo> getUserInfoList();
     public void saveUserInfo(UserInfo userInfo);
 }
