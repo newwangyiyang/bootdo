@@ -4,34 +4,27 @@
 <mapper namespace="com.bootdo.delivery.dao.DeliveryDao">
 	<select id="getDeliveryById" resultType="com.bootdo.delivery.vo.DeliveryVo" parameterType="String">
 		select
-		--主表
-		a.contract_id contractId, --合同号
-		a.division_id divisionId, --事业部
-		a.theme theme, --主题
-		a.flow_no flow, --流水号
-		a.status status --状态
-		DATE_FORMAT(a.create_time, '%Y-%m-%d %H-%i-%s') createTime --创建时间
-		--b表
-		b.name name, --name
-		b.value userId, --id
-		--c表
+		a.contract_id contractId,
+		a.division_id divisionId,
+		a.theme theme,
+		a.flow_no flow,
+		a.status status,
+		a.create_time createTime,
+		b.name name,
+		b.value userId,
 		c.name deliveryLevel,
 		c.value deliveryLeveryId,
-		--d表
 		d.name deliveryType,
-		d.value deliveryTypeId,
-
+		d.value deliveryTypeId
 	 	from
 		t_business_delivery_application a
 		left join (
 		select
 		`name`,
-		`value`
+		user_id value
 		from
 		sys_user
-		<where>
-			and status = 1
-		</where>
+		WHERE status = '1'
 		) b
 		on a.CREATE_USER_ID = b.value
 		left join (
@@ -40,9 +33,7 @@
 		`name`
 		FROM
 		sys_dict
-		<where>
-		type = 'deliveryLevel'
-		</where>
+		WHERE type = 'color'
 		) c
 		on a.DELIVERY_LEVEL = c.value
 		left join (
@@ -54,8 +45,6 @@
 		WHERE
 		type = 'deliveryType'
 		) d on a.delivery_type = d.value
-		<where>
-			and id = #{id}
-		</where>
+		WHERE id = #{id}
 	</select>
 </mapper>
