@@ -1,6 +1,7 @@
 package com.bootdo.delivery.dao;
 
 import com.bootdo.delivery.domain.UserInfo;
+import com.bootdo.delivery.vo.DeliveryListVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 @Mapper
 public interface UserInfoDao {
     public UserInfo getUserInfoByUserId(@Param("userId") String userId);
-    public List<Map<String, String>> getMapList();
+    public DeliveryListVo getMapList();
     public List<UserInfo> getUserInfoList();
     public void saveUserInfo(UserInfo userInfo);
 }

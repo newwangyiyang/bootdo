@@ -3,6 +3,7 @@ package com.bootdo.delivery.controller;
 import com.bootdo.common.utils.ResultBean;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
+import com.bootdo.delivery.vo.DeliveryListVo;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -100,7 +101,13 @@ public class UserInfoController {
 
 
     @GetMapping("getMapList")
-    public Map<String, Object> getMapList() {
+    public DeliveryListVo getMapList() {
         return userInfoService.getMapList();
+    }
+
+
+    @GetMapping("/getMapParam")
+    public Map<String, Object> getMapParam(@RequestParam Map<String, Object> map) {
+        return map;
     }
 }
