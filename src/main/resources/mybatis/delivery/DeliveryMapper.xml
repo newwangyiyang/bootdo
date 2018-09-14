@@ -33,7 +33,7 @@
 		`name`
 		FROM
 		sys_dict
-		WHERE type = 'color'
+		WHERE type = 'deliveryLevel'
 		) c
 		on a.DELIVERY_LEVEL = c.value
 		left join (
@@ -47,4 +47,7 @@
 		) d on a.delivery_type = d.value
 		WHERE id = #{id}
 	</select>
+	<insert id="saveUploadFile">
+		insert into t_attachment(ID, PATH) values (#{id}, #{path})
+	</insert>
 </mapper>

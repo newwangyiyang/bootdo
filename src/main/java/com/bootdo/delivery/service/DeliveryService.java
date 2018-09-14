@@ -11,4 +11,5 @@ import com.bootdo.delivery.vo.DeliveryVo;
  **/
 public interface DeliveryService {
     DeliveryVo getDeliveryById(String id);
+    void SaveUploadFile(String id, String path);
 }

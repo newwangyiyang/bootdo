@@ -14,4 +14,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface DeliveryDao {
     public DeliveryVo getDeliveryById(@Param("id") String id);
+    public Integer saveUploadFile(@Param("id") String id, @Param("path") String path);
 }
