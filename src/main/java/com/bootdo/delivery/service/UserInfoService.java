@@ -16,4 +16,5 @@ public interface UserInfoService {
     List<UserInfo> getUserInfoList();
     UserInfo saveUserInfo(UserInfo userInfo);
     DeliveryListVo getMapList();
+    List<UserInfo> getUserInfoListSp();
 }

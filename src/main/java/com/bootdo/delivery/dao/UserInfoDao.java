@@ -19,4 +19,5 @@ public interface UserInfoDao {
     public DeliveryListVo getMapList();
     public List<UserInfo> getUserInfoList();
     public void saveUserInfo(UserInfo userInfo);
+    public List<UserInfo> getUserInfoListSp();
 }

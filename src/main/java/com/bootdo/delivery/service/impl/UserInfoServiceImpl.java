@@ -51,4 +51,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     public DeliveryListVo getMapList() {
         return userInfoDao.getMapList();
     }
+
+    @Override
+    public List<UserInfo> getUserInfoListSp() {
+        return userInfoDao.getUserInfoListSp();
+    }
 }

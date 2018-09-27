@@ -77,6 +77,8 @@ public class ShiroConfig {
         //设置开放路径(必须再开始位置就进行设置)
         filterChainDefinitionMap.put("/userInfo/**", "anon");
         filterChainDefinitionMap.put("/delivery/**", "anon");
+        filterChainDefinitionMap.put("/tryTest/**", "anon");
+        filterChainDefinitionMap.put("/exportDemo/**", "anon");
 
         filterChainDefinitionMap.put("/login","anon");
         filterChainDefinitionMap.put("/css/**", "anon");

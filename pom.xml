@@ -6,7 +6,7 @@
     <groupId>com.bootdo</groupId>
     <artifactId>bootdo</artifactId>
     <version>2.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>bootdo</name>
     <description>Demo project for Spring Boot</description>
@@ -255,18 +255,24 @@
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
+        <!--xxl-excel -->
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-excel</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--war包部署需要-->
         <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-web</artifactId>-->
-        <!--&lt;!&ndash; 移除嵌入式tomcat插件 &ndash;&gt;-->
-        <!--<exclusions>-->
-            <!--<exclusion>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-            <!--</exclusion>-->
-        <!--</exclusions>-->
-    <!--</dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+            <!--&lt;!&ndash; 移除嵌入式tomcat插件 &ndash;&gt;-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.boot</groupId>-->
+                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>javax.servlet</groupId>-->
             <!--<artifactId>javax.servlet-api</artifactId>-->
