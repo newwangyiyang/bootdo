@@ -1,19 +1,21 @@
 package com.bootdo.delivery.controller;
 
 import com.bootdo.common.utils.ExcelExportUtil4DIY;
-import com.bootdo.common.utils.Query;
+import com.bootdo.common.utils.JUtils.excel.ExcelReadHelper;
+import com.bootdo.common.utils.UploadUtils;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
+import com.bootdo.delivery.vo.UserInfoVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +32,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/exportDemo", method = RequestMethod.GET)
+@CrossOrigin
 public class ExportXls {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -53,6 +56,17 @@ public class ExportXls {
         }finally{
             out.close();
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getExcelData", method = RequestMethod.POST)
+    public List<Object> getExcelData(@RequestParam MultipartFile file, HttpServletRequest request) throws Exception {
+        String url = UploadUtils.upload(file, request);
+        String s = request.getSession().getServletContext().getRealPath("/") + url;
+        logger.info(s);
+        List<Object> UserInfoVo = ExcelReadHelper.excelRead(new File(s), new String[]{"name", "age", "sex"}, UserInfoVo.class);
+
+        return UserInfoVo;
     }
 
 }

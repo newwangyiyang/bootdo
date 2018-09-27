@@ -112,7 +112,6 @@ public class UploadUtils {
         logger.info("【文件路径：】" + url);
         // 请求URL路径 +文件保存位置
         String filePath = request.getSession().getServletContext().getRealPath("/")+ url;
-        System.out.println(filePath);
         FileUtils.copyInputStreamToFile(file.getInputStream(), new File(
                 filePath));
         return url;

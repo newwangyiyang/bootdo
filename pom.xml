@@ -11,6 +11,8 @@
     <name>bootdo</name>
     <description>Demo project for Spring Boot</description>
 
+
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -26,6 +28,7 @@
         <velocity.version>1.7</velocity.version>
         <activiti.version>5.22.0</activiti.version>
     </properties>
+
 
     <dependencies>
         <dependency>
