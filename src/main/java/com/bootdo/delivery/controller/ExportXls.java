@@ -1,7 +1,10 @@
 package com.bootdo.delivery.controller;
 
+import com.bootdo.common.utils.DownloadUtil;
 import com.bootdo.common.utils.ExcelExportUtil4DIY;
+import com.bootdo.common.utils.FileUtil;
 import com.bootdo.common.utils.JUtils.excel.ExcelReadHelper;
+import com.bootdo.common.utils.JUtils.file.FileUtils;
 import com.bootdo.common.utils.UploadUtils;
 import com.bootdo.delivery.domain.UserInfo;
 import com.bootdo.delivery.service.UserInfoService;
@@ -69,4 +72,12 @@ public class ExportXls {
         return UserInfoVo;
     }
 
+    @GetMapping("/getListMapTest")
+    @ResponseBody
+    public void getListMapTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String s = "D:\\bootdo\\bootdo\\bootdo.sql";
+        String n = FileUtil.renameToUUID(s);
+
+        DownloadUtil.downFile(response, s, n);
+    }
 }

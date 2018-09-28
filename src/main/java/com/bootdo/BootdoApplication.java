@@ -9,6 +9,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration(exclude = {
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
@@ -18,7 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.bootdo.*.dao")
 @SpringBootApplication
 @EnableCaching
-public class BootdoApplication extends SpringBootServletInitializer{
+@EnableScheduling
+public class BootdoApplication {
+//        extends SpringBootServletInitializer
     public static void main(String[] args) {
         SpringApplication.run(BootdoApplication.class, args);
         System.out.println("ヾ(◍°∇°◍)ﾉﾞ    bootdo启动成功      ヾ(◍°∇°◍)ﾉﾞ\n" +
@@ -30,8 +34,8 @@ public class BootdoApplication extends SpringBootServletInitializer{
                 "|_______/  '.__.'  '.__.' \\__/|______.'  '.__.'  ");
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(BootdoApplication.class);
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(BootdoApplication.class);
+//    }
 }
