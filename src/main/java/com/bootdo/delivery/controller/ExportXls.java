@@ -75,9 +75,14 @@ public class ExportXls {
     @GetMapping("/getListMapTest")
     @ResponseBody
     public void getListMapTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String s = "D:\\bootdo\\bootdo\\bootdo.sql";
+        String s = "http://img.zcool.cn/community/0117e2571b8b246ac72538120dd8a4.jpg@1280w_1l_2o_100sh.jpg";
         String n = FileUtil.renameToUUID(s);
 
-        DownloadUtil.downFile(response, s, n);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String s1 = format.format(new Date());
+        logger.info(s1);
+
+
+        DownloadUtil.downFileByUrl(request, response, s, n);
     }
 }
