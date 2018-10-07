@@ -264,6 +264,13 @@
             <artifactId>xxl-excel</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--添加freeMarker-->
+        <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
         <!--war包部署需要-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
